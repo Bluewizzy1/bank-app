@@ -1,0 +1,2 @@
+DEPOSIT of 123 to 2020102020(blue) from 2020102020(blue) 
+TRANSFER of 332 to 1234567(samson) from 2020102020(blue) 
