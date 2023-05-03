@@ -1,14 +1,16 @@
-# import datetime
 
 
 
 class Bank:
+    #   here, we initialize the attributes
     def __init__(self):
-        self.client_details_list = [] 
+        self.client_details_list = []       #    an empty list that will store client details
         self.loggedin = False
         self.cash = 100
         self.TransferCash = False
 
+
+    #   method is defined to create a new bank account for a client.
     def sign_up(self, name, ph, password):
         cash = self.cash
         conditions = True
@@ -16,6 +18,7 @@ class Bank:
             print("Invalid Phone Number! Please Enter 10 Digit Number")
             conditions = False
 
+        # to check for the lenght of the password
         if len(password) < 5 or len(password) > 18:
             print("Enter password greater than 5, and less than 18 characters")
             conditions = False
@@ -27,6 +30,7 @@ class Bank:
                 for details in self.client_details_list:
                     f.write(str(details)+"\n")
 
+    # to checks if the provided ph and password match any of the records
     def login(self, name, ph, password):
         with open(f"{name}.txt","r") as f:
             details = f.read()
@@ -44,6 +48,8 @@ class Bank:
             else:
                 print("Wrong details")
 
+
+    #    to update the cash balance of a client and record the deposit transaction in a text file.
     def deposit(self, amount):
         if amount > 0:
             self.cash += amount
@@ -60,6 +66,7 @@ class Bank:
         else:
             print("Enter correct value of amount")
 
+    #    checks if the phone number given by the ph parameter matches the phone number of the client whose details were just read from the file.
     def transfer_cash(self, amount, name, ph):
         with open(f"{name}.txt", "r") as f:
             details = f.read()
@@ -88,6 +95,7 @@ class Bank:
         else:
             print("Oops!")
 
+    #    this replaces the old password which is assumed to be the third element of client_details_list with the new password provided as a parameter to the method
     def password_change(self, password):
         if len(password) < 5 or len(password) > 18:
             print("Enter password greater than 5, and less than 18 characters")
@@ -100,18 +108,7 @@ class Bank:
                 f.write(details.replace(str(self.client_details_list[2]),str(password)))
              print("New password set up successfully")
 
-    def ph_change(self, ph):
-         if len(str(ph)) > 10 or len(str(ph)) < 10:
-            print("Invalid Phone Number! Please Enter 10 Digit Number")
-         else:
-             with open(f"{self.name}.txt", "r") as f:
-                details = f.read()
-                self.client_details_list = details.split("\n")
-
-             with open(f"{self.name}.txt", "w") as f:
-                f.write(details.replace(str(self.client_details_list[1]),str(ph)))
-             print("New phone number set up successfully")
-
+    #   this checks the loggedin if it is true, then grants user access to see consumated transaction.
     def history(self,ph):
         if self.loggedin == True:
             with open("transactions.txt", "r") as f:
@@ -122,10 +119,12 @@ class Bank:
         else:
             print("Please log in first")    
 
+    #   updates the transaction history file called "transactions.txt" with information about a new transaction
     def update_history(self,type,amount,ph,sender_ph,name,sender_name):
         with open("transactions.txt", "a") as f:
             f.write(f"{str(type).upper()} of {amount} to {ph}({name}) from {sender_ph}({sender_name}) \n")
 
+#   check if code is being executed as the main program, then creates a new instance of Bank object
 if __name__ == "__main__":
     Bank_object = Bank()
     print("Welcome to Blueworld Bank")
@@ -232,30 +231,10 @@ if __name__ == "__main__":
                     print("Logged out")
                     break
             else:
-                print("Login jo!!!!!!")
-    
-    # def account_balance(self):
-    #     if self.loggedin == True:
-    #         with open(f"{self.client_details_list[0]}.txt", "r") as f:
-    #             lines = f.readlines()
-    #             balance = int(lines[3])
-    #             print("Your current balance is:", balance)
-    #     else:
-    #         print("Please log in first")
-
-
-    # def transactions(self):
-    #     if self.loggedin == True:
-    #         with open("transactions.txt", "r") as f:
-    #             lines = f.readlines()
-    #             for line in lines:
-    #                 if self.client_details_list[1] in line:
-    #                     print(line.strip())
-    #     else:
-    #         print("Please log in first")    
+                print("Please login first")
     
 
-    if user == 2:
+        #   requesting input from a user to create a new bank account.
         print("Creating a new account")
         name = input("Enter name: ")
         ph = int(input("Enter phone number: ")) 
