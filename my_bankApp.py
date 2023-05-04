@@ -1,6 +1,5 @@
 
 
-
 class Bank:
     #   here, we initialize the attributes
     def __init__(self):
@@ -131,6 +130,9 @@ if __name__ == "__main__":
     print("1. Login")
     print("2. Create a new account")
     user = int(input("Make decision: "))
+    print(user)
+    # import pdb
+    # pdb.set_trace()
 
     if user == 1:
         print("Logging in...")
@@ -148,8 +150,8 @@ if __name__ == "__main__":
                 print("6. Logout")
                 login_user = int(input())
                 if login_user == 1:
-                    print("Balance =", Bank_object.cash)
-                    amount = int(input("Enter amount: "))
+                    print("Balance = $", Bank_object.cash)
+                    amount = int(input("Enter amount:$ "))
                     Bank_object.deposit(amount)
                     print("\n1.back menu")
                     print("2. Logout")
@@ -160,7 +162,7 @@ if __name__ == "__main__":
                         break
 
                 elif login_user == 2:
-                    print("Balance =", Bank_object.cash)
+                    print("Balance = $", Bank_object.cash)
                     print("\n1.back menu")
                     print("2. Logout")
                     choose = int(input())
@@ -170,8 +172,8 @@ if __name__ == "__main__":
                         break
 
                 elif login_user == 3:
-                    print("Balance =", Bank_object.cash)
-                    amount = int(input("Enter amount: "))
+                    print("Balance = $", Bank_object.cash)
+                    amount = int(input("Enter amount: $"))
                     if amount > 0 and amount <= Bank_object.cash:
                         name = input("Enter person name: ")
                         ph = input("Enter person phone number: ")
@@ -233,7 +235,7 @@ if __name__ == "__main__":
             else:
                 print("Please login first")
     
-
+    if user == 2:
         #   requesting input from a user to create a new bank account.
         print("Creating a new account")
         name = input("Enter name: ")

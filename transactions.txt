@@ -1,2 +1,6 @@
 DEPOSIT of 123 to 2020102020(blue) from 2020102020(blue) 
 TRANSFER of 332 to 1234567(samson) from 2020102020(blue) 
+DEPOSIT of 5666 to 2020102020(blue) from 2020102020(blue) 
+DEPOSIT of 233 to 2020102020(blue) from 2020102020(blue) 
+TRANSFER of 244 to 1234567(samson) from 2020102020(blue) 
+DEPOSIT of 150 to 2222000022(Aduba) from 2222000022(Aduba) 
